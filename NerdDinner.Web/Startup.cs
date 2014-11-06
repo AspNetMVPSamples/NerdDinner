@@ -37,35 +37,35 @@ namespace NerdDinner.Web
                     .AddInMemoryStore()
                     .AddDbContext<ApplicationDbContext>();
 
-             // var runningOnMono = Type.GetType("Mono.Runtime") != null;
+            // var runningOnMono = Type.GetType("Mono.Runtime") != null;
 
-             //    // Add EF services to the services container
-             //    if (runningOnMono)
-             //    {
-             //        services.AddEntityFramework()
-             //                .AddSQLite()
-             //                .AddDbContext<ApplicationDbContext>();
-             //    }
-             //    else
-             //    {
-             //     // Add EF services to the services container.
-             //   services.AddEntityFramework(Configuration)
-             //       .AddSqlServer()
-             //       .AddDbContext<ApplicationDbContext>();
-             //    }
+            //    // Add EF services to the services container
+            //    if (runningOnMono)
+            //    {
+            //        services.AddEntityFramework()
+            //                .AddSQLite()
+            //                .AddDbContext<ApplicationDbContext>();
+            //    }
+            //    else
+            //    {
+            //     // Add EF services to the services container.
+            //   services.AddEntityFramework(Configuration)
+            //       .AddSqlServer()
+            //       .AddDbContext<ApplicationDbContext>();
+            //    }
 
-// services.SetupOptions<ApplicationDbContextOptions>(options =>
-//                         {
-                         
-//                             if (runningOnMono)
-//                             {
-//                                 options.UseSQLite(configuration.Get("Data:SQLiteConnection:ConnectionString");
-//                             }
-//                             else
-//                             {
-//                                 options.UseSqlServer(configuration.Get("Data:DefaultConnection:ConnectionString"));
-//                             }
-//                         });
+            // services.SetupOptions<ApplicationDbContextOptions>(options =>
+            //                         {
+
+            //                             if (runningOnMono)
+            //                             {
+            //                                 options.UseSQLite(configuration.Get("Data:SQLiteConnection:ConnectionString");
+            //                             }
+            //                             else
+            //                             {
+            //                                 options.UseSqlServer(configuration.Get("Data:DefaultConnection:ConnectionString"));
+            //                             }
+            //                         });
 
 
 
@@ -92,7 +92,7 @@ namespace NerdDinner.Web
             // Add the following to the request pipeline only in development environment.
             if (string.Equals(env.EnvironmentName, "Development", StringComparison.OrdinalIgnoreCase))
             {
-                
+
                 app.UseErrorPage(ErrorPageOptions.ShowAll);
                 app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
             }
@@ -103,7 +103,7 @@ namespace NerdDinner.Web
                 app.UseErrorHandler("/Home/Error");
             }
 
-    
+
 
 
 
