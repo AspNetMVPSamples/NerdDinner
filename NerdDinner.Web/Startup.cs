@@ -14,6 +14,7 @@ using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
 using NerdDinner.Web.Models;
 
+
 namespace NerdDinner.Web
 {
     public class Startup
@@ -31,10 +32,43 @@ namespace NerdDinner.Web
         // This method gets called by the runtime.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add EF services to the services container.
-            services.AddEntityFramework(Configuration)
-                .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>();
+
+            services.AddEntityFramework()
+                    .AddInMemoryStore()
+                    .AddDbContext<ApplicationDbContext>();
+
+             // var runningOnMono = Type.GetType("Mono.Runtime") != null;
+
+             //    // Add EF services to the services container
+             //    if (runningOnMono)
+             //    {
+             //        services.AddEntityFramework()
+             //                .AddSQLite()
+             //                .AddDbContext<ApplicationDbContext>();
+             //    }
+             //    else
+             //    {
+             //     // Add EF services to the services container.
+             //   services.AddEntityFramework(Configuration)
+             //       .AddSqlServer()
+             //       .AddDbContext<ApplicationDbContext>();
+             //    }
+
+// services.SetupOptions<ApplicationDbContextOptions>(options =>
+//                         {
+                         
+//                             if (runningOnMono)
+//                             {
+//                                 options.UseSQLite(configuration.Get("Data:SQLiteConnection:ConnectionString");
+//                             }
+//                             else
+//                             {
+//                                 options.UseSqlServer(configuration.Get("Data:DefaultConnection:ConnectionString"));
+//                             }
+//                         });
+
+
+
 
             // Add Identity services to the services container.
             services.AddDefaultIdentity<ApplicationDbContext, ApplicationUser, IdentityRole>(Configuration);
@@ -58,7 +92,7 @@ namespace NerdDinner.Web
             // Add the following to the request pipeline only in development environment.
             if (string.Equals(env.EnvironmentName, "Development", StringComparison.OrdinalIgnoreCase))
             {
-                app.UseBrowserLink();
+                
                 app.UseErrorPage(ErrorPageOptions.ShowAll);
                 app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
             }
@@ -68,6 +102,11 @@ namespace NerdDinner.Web
                 // send the request to the following path or controller action.
                 app.UseErrorHandler("/Home/Error");
             }
+
+    
+
+
+
 
             // Add static files to the request pipeline.
             app.UseStaticFiles();
