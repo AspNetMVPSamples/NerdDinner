@@ -1,6 +1,7 @@
 ﻿{
-    "version": "0.0.0",
-    "name": "NerdDinner.Web",
+    "version": "0.0.1",
+    "name": "NerdDinner",
+    "repository": { "type": "github", "url":"https://github.com/AspNetMVPSamples/NerdDinner"}
     "devDependencies": {
         "grunt": "^0.4.5",
         "grunt-bower-task": "^0.4.0"
