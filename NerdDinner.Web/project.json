@@ -2,23 +2,22 @@
   "webroot": "wwwroot",
   "version": "1.0.0-*",
   "dependencies": {
-    "EntityFramework.SqlServer": "7.0.0-beta1",
-    "EntityFramework.Commands": "7.0.0-beta1",
-    "Microsoft.AspNet.Mvc": "6.0.0-beta1",
-    "Microsoft.AspNet.Diagnostics": "1.0.0-beta1",
-    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-beta1",
-    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta1",
-    "Microsoft.AspNet.Security.Cookies": "1.0.0-beta1",
-    "Microsoft.AspNet.Server.IIS": "1.0.0-beta1",
-    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta1",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-beta1",
-    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta1",
-    "Microsoft.Framework.CodeGenerators.Mvc": "1.0.0-beta1",
-    "Microsoft.Framework.Logging": "1.0.0-beta1",
-    "Microsoft.Framework.Logging.Console": "1.0.0-beta1",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta1",
-    "EntityFramework": "6.1.2.0-beta1"
-  },
+    "EntityFramework.SqlServer": "7.0.0-*",
+    "EntityFramework.Commands": "7.0.0-*",
+    "Microsoft.AspNet.Mvc": "6.0.0-*",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-*",
+    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-*",
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-*",
+    "Microsoft.AspNet.Security.Cookies": "1.0.0-*",
+    "Microsoft.AspNet.Server.IIS": "1.0.0-*",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-*",
+    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
+    "Microsoft.Framework.CodeGenerators.Mvc": "1.0.0-*",
+    "Microsoft.Framework.Logging": "1.0.0-*",
+    "Microsoft.Framework.Logging.Console": "1.0.0-*",
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-*"
+    },
   "commands": {
     "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:5000",
     "gen": "Microsoft.Framework.CodeGeneration",
@@ -39,13 +38,5 @@
     "**.kproj",
     "**.user",
     "**.vspscc"
-  ],
-  "scripts": {
-    "postrestore": [
-      "npm install"
-    ],
-    "prepare": [
-      "grunt bower:install"
-    ]
-  }
+  ]
 }
