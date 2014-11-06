@@ -31,10 +31,23 @@ namespace NerdDinner.Web
         // This method gets called by the runtime.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add EF services to the services container.
+
+             var runningOnMono = Type.GetType("Mono.Runtime") != null;
+
+                // Add EF services to the services container
+                if (runningOnMono)
+                {
+                    services.AddEntityFramework()
+                            .AddInMemoryStore()
+                            .AddDbContext<ApplicationDbContext>();
+                }
+                else
+                {
+                                // Add EF services to the services container.
             services.AddEntityFramework(Configuration)
                 .AddSqlServer()
                 .AddDbContext<ApplicationDbContext>();
+                }
 
             // Add Identity services to the services container.
             services.AddDefaultIdentity<ApplicationDbContext, ApplicationUser, IdentityRole>(Configuration);
@@ -58,7 +71,7 @@ namespace NerdDinner.Web
             // Add the following to the request pipeline only in development environment.
             if (string.Equals(env.EnvironmentName, "Development", StringComparison.OrdinalIgnoreCase))
             {
-                app.UseBrowserLink();
+                
                 app.UseErrorPage(ErrorPageOptions.ShowAll);
                 app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
             }
@@ -68,6 +81,11 @@ namespace NerdDinner.Web
                 // send the request to the following path or controller action.
                 app.UseErrorHandler("/Home/Error");
             }
+
+    
+
+
+
 
             // Add static files to the request pipeline.
             app.UseStaticFiles();
