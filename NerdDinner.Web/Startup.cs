@@ -14,6 +14,7 @@ using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
 using NerdDinner.Web.Models;
 
+
 namespace NerdDinner.Web
 {
     public class Startup
@@ -32,22 +33,42 @@ namespace NerdDinner.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-             var runningOnMono = Type.GetType("Mono.Runtime") != null;
+            services.AddEntityFramework()
+                    .AddInMemoryStore()
+                    .AddDbContext<ApplicationDbContext>();
 
-                // Add EF services to the services container
-                if (runningOnMono)
-                {
-                    services.AddEntityFramework()
-                            .AddInMemoryStore()
-                            .AddDbContext<ApplicationDbContext>();
-                }
-                else
-                {
-                                // Add EF services to the services container.
-            services.AddEntityFramework(Configuration)
-                .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>();
-                }
+             // var runningOnMono = Type.GetType("Mono.Runtime") != null;
+
+             //    // Add EF services to the services container
+             //    if (runningOnMono)
+             //    {
+             //        services.AddEntityFramework()
+             //                .AddSQLite()
+             //                .AddDbContext<ApplicationDbContext>();
+             //    }
+             //    else
+             //    {
+             //     // Add EF services to the services container.
+             //   services.AddEntityFramework(Configuration)
+             //       .AddSqlServer()
+             //       .AddDbContext<ApplicationDbContext>();
+             //    }
+
+// services.SetupOptions<ApplicationDbContextOptions>(options =>
+//                         {
+                         
+//                             if (runningOnMono)
+//                             {
+//                                 options.UseSQLite(configuration.Get("Data:SQLiteConnection:ConnectionString");
+//                             }
+//                             else
+//                             {
+//                                 options.UseSqlServer(configuration.Get("Data:DefaultConnection:ConnectionString"));
+//                             }
+//                         });
+
+
+
 
             // Add Identity services to the services container.
             services.AddDefaultIdentity<ApplicationDbContext, ApplicationUser, IdentityRole>(Configuration);

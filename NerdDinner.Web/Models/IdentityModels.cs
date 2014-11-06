@@ -24,16 +24,11 @@ namespace NerdDinner.Web.Models
             // are supported in ASP.NET 5
             if (!_created)
             {
-                Database.AsRelational().ApplyMigrations();
+                Database.EnsureCreated();
                 _created = true;
             }
         }
         
-        protected override void OnConfiguring(DbContextOptions options)
-        {
-            options.UseSqlServer();
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

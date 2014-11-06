@@ -2,6 +2,9 @@
     "Data": {
         "DefaultConnection": { 
             "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-NerdDinner.Web-4817ab7b-7201-4a6e-8b2d-7423844548ae;Trusted_Connection=True;MultipleActiveResultSets=true"
+        },
+         "SQLiteConnection": { 
+            "ConnectionString": "Data Source=nerddinner.db;Version=3;"
         }
     },
     "EntityFramework": {
